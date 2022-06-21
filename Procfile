@@ -1,1 +1,1 @@
-web: sleep 1
+web: python -m http.server $PORT
