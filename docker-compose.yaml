@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  postgres-test:
+    image: postgres:13.6-alpine
+    container_name: helios_data_crawler_test_db
+    ports:
+      - target: 5432
+        published: 5434
+    environment:
+      POSTGRES_DB: helios
+      POSTGRES_USER: helios
+      POSTGRES_PASSWORD: h3li0s
+    volumes:
+      - type: volume
+        source: postgres_data_test
+        target: /var/lib/postgresql/data
+  init-db:
+    image: node:16
+    command: >
+      bash -c "
+        git clone https://github.com/DNUM-SocialGouv/helios.git
+        cd helios
+        yarn
+        yarn migrations
+      "
+    environment:
+      - DATABASE_URL=postgres://helios:h3li0s@helios_data_crawler_test_db:5432/helios
+    depends_on:
+      postgres-test:
+        condition: service_started
+
+volumes:
+  postgres_data_test:
