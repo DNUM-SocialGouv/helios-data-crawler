@@ -19,12 +19,12 @@ def main():
     établissements_territoriaux_finess = charge_un_fichier_xml(
         fichier, ".//structureet"
     )
-    logger.info(établissements_territoriaux_finess.shape[0])
+    logger.warning(établissements_territoriaux_finess.shape[0])
 
     établissements_territoriaux_ouverts_finess = conserveLesÉtablissementsOuverts(
         établissements_territoriaux_finess
     )
-    logger.info(établissements_territoriaux_ouverts_finess.shape[0])
+    logger.warning(établissements_territoriaux_ouverts_finess.shape[0])
 
 
 if __name__ == "__main__":

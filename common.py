@@ -2,6 +2,7 @@ import logging
 from logging import Logger
 
 import pandas as pd
+import paramiko
 
 
 def charge_un_fichier_xml(chemin: str, xpath: str) -> pd.DataFrame:
@@ -14,7 +15,11 @@ def configure_logger() -> Logger:
 
 
 def télécharge_un_fichier():
-    pass
+    rsa_key = paramiko.RSAKey.from_private_key_file("~/.ssh/sftp_local")
+    transport = paramiko.Transport((inventory[0], 8055))
+    transport.connect(username="usr_finess_ls", pkey=rsa_key)
+    sftp = paramiko.SFTPClient.from_transport(transport)
+    print(sftp.listdir())
 
 
 def main():
