@@ -10,6 +10,16 @@ def charge_un_fichier_xml(chemin: str, xpath: str) -> pd.DataFrame:
 
 
 def configure_logger() -> Logger:
-    logger = logging.getLogger("helios")
-    logger.setLevel(logging.INFO)
-    return logger
+    return logging.getLogger("helios")
+
+
+def télécharge_un_fichier():
+    pass
+
+
+def main():
+    télécharge_un_fichier()
+
+
+if __name__ == "__main__":
+    main()
