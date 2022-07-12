@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/helios-metriques/static/css/main.8c837c4c.css",
-    "main.js": "/helios-metriques/static/js/main.0d70d015.js",
+    "main.js": "/helios-metriques/static/js/main.e5dbeb3a.js",
     "index.html": "/helios-metriques/index.html",
     "main.8c837c4c.css.map": "/helios-metriques/static/css/main.8c837c4c.css.map",
-    "main.0d70d015.js.map": "/helios-metriques/static/js/main.0d70d015.js.map"
+    "main.e5dbeb3a.js.map": "/helios-metriques/static/js/main.e5dbeb3a.js.map"
   },
   "entrypoints": [
     "static/css/main.8c837c4c.css",
-    "static/js/main.0d70d015.js"
+    "static/js/main.e5dbeb3a.js"
   ]
 }
