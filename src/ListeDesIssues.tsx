@@ -1,6 +1,4 @@
-import { Story } from './VisuelSprint';
-
-export const ListeDesIssues = ({ stories }: { stories: Story[] }) => {
+export const ListeDesIssues = () => {
   return (
     <table>
       <thead>
@@ -13,7 +11,7 @@ export const ListeDesIssues = ({ stories }: { stories: Story[] }) => {
         </tr>
       </thead>
       <tbody>
-        {stories.map((story, index) => (
+        {/* {stories.map((story, index) => (
           <tr key={index}>
             <th>{story.titre}</th>
             <th>{story.label}</th>
@@ -21,7 +19,7 @@ export const ListeDesIssues = ({ stories }: { stories: Story[] }) => {
             <th>{story.type}</th>
             <th>{story.epic}</th>
           </tr>
-        ))}
+        ))} */}
       </tbody>
     </table>
   );

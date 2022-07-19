@@ -43,7 +43,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^4.0.0",
-    "react-router-dom": "^6.3.0"
+    "gh-pages": "^4.0.0"
   }
 }
