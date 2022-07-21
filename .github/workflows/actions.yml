@@ -1,17 +1,17 @@
-# name: Deploy
+name: Deploy
 
-# on:
-#   push:
-#     branches:
-#       - master
+on:
+  push:
+    branches:
+      - master
 
-# jobs:
-#   deploy-github-pages:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout this branch
-#         uses: actions/checkout@master
-#       - name: Install node modules
-#         run: yarn --frozen-lockfile --check-files
-#       - name: Deploy the projet on https://dnum-socialgouv.github.io/helios-metriques/
-#         run: yarn deploy
+jobs:
+  deploy-github-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this branch
+        uses: actions/checkout@master
+      - name: Install node modules
+        run: yarn --frozen-lockfile --check-files
+      - name: Build the project
+        run: yarn build
