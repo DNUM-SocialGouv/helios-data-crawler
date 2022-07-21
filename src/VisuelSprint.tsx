@@ -34,6 +34,7 @@ export const VisuelSprint = ({ sprint, retour }: { sprint: Sprint; retour: Funct
 
   useEffect(() => {
     récupèreLesDéploiements();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sprint]);
 
   return (
