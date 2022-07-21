@@ -13,5 +13,5 @@ jobs:
         uses: actions/checkout@master
       - name: Install node modules
         run: yarn --frozen-lockfile --check-files
-      - name: Build the project
-        run: yarn build
+      - name: Deploy the project
+        run: yarn deploy
