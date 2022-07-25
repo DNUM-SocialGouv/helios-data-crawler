@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AxiosDéploiementsLoader } from './déploiement-loader/AxiosDéploiementsLoader';
+import { AxiosSprintLoader } from './sprint-loader/AxiosSprintLoader';
 import { NodeVariablesDEnvironnement } from './variables-d-environnement/NodeVariablesDEnvironnement';
 
 @Module({
@@ -12,7 +13,11 @@ import { NodeVariablesDEnvironnement } from './variables-d-environnement/NodeVar
       provide: 'VariablesDEnvironnement',
       useClass: NodeVariablesDEnvironnement,
     },
+    {
+      provide: 'SprintsLoader',
+      useClass: AxiosSprintLoader,
+    },
   ],
-  exports: ['DéploiementsLoader', 'VariablesDEnvironnement'],
+  exports: ['DéploiementsLoader', 'VariablesDEnvironnement', 'SprintsLoader'],
 })
 export class GatewaysModule {}

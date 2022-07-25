@@ -8,6 +8,11 @@ export class NodeVariablesDEnvironnement implements VariablesDEnvironnement {
   );
   readonly SCALINGO_TOKEN: string =
     this.lisOuSignaleSiNonRenseignée('SCALINGO_TOKEN');
+  readonly JIRA_HOST: string = this.lisOuSignaleSiNonRenseignée('JIRA_HOST');
+  readonly JIRA_BOARD_ID: string =
+    this.lisOuSignaleSiNonRenseignée('JIRA_BOARD_ID');
+  readonly JIRA_USERNAME: string =
+    this.lisOuSignaleSiNonRenseignée('JIRA_USERNAME');
   readonly JIRA_PASSWORD: string =
     this.lisOuSignaleSiNonRenseignée('JIRA_PASSWORD');
 

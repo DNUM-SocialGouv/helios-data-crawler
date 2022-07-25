@@ -1,19 +1,19 @@
 import { Controller, Get, Render } from '@nestjs/common';
-import { Déploiement } from 'src/métier/entities/Déploiement';
-import { RécupèreLesDéploiementsUseCase } from '../../métier/use-case/RécupèreLesDéploiementsUseCase';
+import { RécupèreLesSprintsUseCase } from 'src/métier/use-case/RécupèreLesSprintsUseCase';
+import {
+  construisLesSprintViewModel,
+  SprintViewModel,
+} from './SprintViewModel';
 
 @Controller()
 export class HomeEndpoint {
-  constructor(
-    private readonly récupèreLesDéploiements: RécupèreLesDéploiementsUseCase,
-  ) {}
+  constructor(private readonly récupèreLesSprints: RécupèreLesSprintsUseCase) {}
 
   @Get()
   @Render('index')
-  async getHello(): Promise<{ déploiements: Déploiement[] }> {
-    const déploiements = await this.récupèreLesDéploiements.exécute();
-    // console.log(déploiements);
+  async home(): Promise<{ sprints: SprintViewModel[] }> {
+    const sprints = await this.récupèreLesSprints.exécute();
 
-    return { déploiements };
+    return { sprints: construisLesSprintViewModel(sprints) };
   }
 }

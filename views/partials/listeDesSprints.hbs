@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th>Sprint</th>
+      <th>Date de début</th>
+      <th>Date de fin</th>
+      <th>Lien</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each sprints }}
+      <tr>
+        <td>{{ this.nom }}</td>
+        <td>{{ this.dateDeDébut }}</td>
+        <td>{{ this.dateDeFin }}</td>
+        <td>
+          <button>voir le sprint {{ this.id }}</button>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
