@@ -2,6 +2,10 @@
   --gris-clair: #f2f2f2;
   --gris-foncé: #ddd;
   --bleu: #046aaa;
+  --bleu-nombre-de-déploiements: #8691aa;
+  --bleu-fréquence-de-déploiement: #0e2356;
+  --bleu-temps-moyen-pour-réparer: #b6e8f0;
+  --bleu-taux-de-déploiement-défectueux: #00afcb;
 }
 
 table {
@@ -28,4 +32,34 @@ table th {
   text-align: left;
   background-color: var(--bleu);
   color: white;
+}
+
+.les-métriques {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.métrique {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  justify-self: center;
+  text-align: center;
+  color: white;
+}
+
+.nombre-de-déploiements {
+  background-color: var(--bleu-nombre-de-déploiements);
+}
+.fréquence-déploiement {
+  background-color: var(--bleu-fréquence-de-déploiement);
+}
+.mean-time-to-restore {
+  background-color: var(--bleu-temps-moyen-pour-réparer);
+}
+.change-failure-rate {
+  background-color: var(--bleu-taux-de-déploiement-défectueux);
 }

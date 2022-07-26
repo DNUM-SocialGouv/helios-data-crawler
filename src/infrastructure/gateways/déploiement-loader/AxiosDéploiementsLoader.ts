@@ -19,6 +19,17 @@ export class AxiosDéploiementsLoader implements DéploiementsLoader {
     private readonly variablesDEnvironnement: VariablesDEnvironnement,
   ) {}
 
+  // async récupèreLesDéploiementsSurLaPériode(
+  //   début: Date,
+  //   fin: Date,
+  // ): Promise<Déploiement[]> {
+  //   const déploiements = await this.récupèreTousLesDéploiements();
+
+  //   return déploiements.filter(
+  //     (déploiement) => début <= déploiement.date && déploiement.date <= fin,
+  //   );
+  // }
+
   async récupèreTousLesDéploiements(): Promise<Déploiement[]> {
     const tousLesDéploiements = [];
     let page = 1;

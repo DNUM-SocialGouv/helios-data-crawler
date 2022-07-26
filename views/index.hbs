@@ -4,7 +4,13 @@
   <body>
     <h1>Métriques Accelerate pour le projet Helios</h1>
 
-    <h2>Liste des sprints</h2>
+    <h2>Sprint Actif : {{ sprintActif.nom }}</h2>
+
+    <p>date de début : {{ sprintActif.dateDeDébut }}</p>
+    <p>date de fin : {{ sprintActif.dateDeFin }}</p>
+
+    {{> métriques }}
+
     {{> listeDesSprints }}
   </body>
 </html>

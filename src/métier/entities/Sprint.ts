@@ -1,7 +1,8 @@
-export type Sprint = Readonly<{
-  dateDeDébut: Date;
-  dateDeFin: Date;
-  nom: string;
-  id: string;
-  statut: string;
-}>;
+import { Période } from './Période';
+
+export type Sprint = Période &
+  Readonly<{
+    nom: string;
+    id: string;
+    statut: string;
+  }>;

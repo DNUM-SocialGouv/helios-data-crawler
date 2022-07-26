@@ -22,6 +22,12 @@ export class AxiosSprintLoader implements SprintsLoader {
     private readonly variablesDEnvironnement: VariablesDEnvironnement,
   ) {}
 
+  async récupèreLeSprintActif(): Promise<Sprint> {
+    const sprints = await this.récupèreTousLesSprints();
+
+    return sprints.filter((sprint) => sprint.statut === 'active')[0];
+  }
+
   async récupèreTousLesSprints(): Promise<Sprint[]> {
     const donnéesDesSprints = await this.requêteTousLesSprints();
 
