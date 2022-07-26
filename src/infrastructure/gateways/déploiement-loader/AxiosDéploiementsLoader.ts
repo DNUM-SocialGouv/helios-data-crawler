@@ -5,7 +5,11 @@ import { VariablesDEnvironnement } from 'src/métier/gateways/VariablesDEnvironn
 import { DéploiementsLoader } from '../../../métier/gateways/DéploiementsLoader';
 
 type DéploiementScalingoRéponse = Readonly<{
-  deployments: any[];
+  deployments: {
+    created_at: string;
+    status: string;
+    git_ref: string;
+  }[];
   meta: {
     pagination: {
       total_pages: number;
@@ -14,24 +18,15 @@ type DéploiementScalingoRéponse = Readonly<{
 }>;
 
 export class AxiosDéploiementsLoader implements DéploiementsLoader {
+  readonly DÉPLOIEMENT_RÉUSSI = 'success';
+
   constructor(
     @Inject('VariablesDEnvironnement')
     private readonly variablesDEnvironnement: VariablesDEnvironnement,
   ) {}
 
-  // async récupèreLesDéploiementsSurLaPériode(
-  //   début: Date,
-  //   fin: Date,
-  // ): Promise<Déploiement[]> {
-  //   const déploiements = await this.récupèreTousLesDéploiements();
-
-  //   return déploiements.filter(
-  //     (déploiement) => début <= déploiement.date && déploiement.date <= fin,
-  //   );
-  // }
-
   async récupèreTousLesDéploiements(): Promise<Déploiement[]> {
-    const tousLesDéploiements = [];
+    const tousLesDéploiements: DéploiementScalingoRéponse['deployments'] = [];
     let page = 1;
     let nombreDePagesDeDéploiements = 1;
 
@@ -45,10 +40,18 @@ export class AxiosDéploiementsLoader implements DéploiementsLoader {
       page += 1;
     }
 
-    return tousLesDéploiements.map((déploiement) => ({
-      date: new Date(déploiement.created_at),
-      gitRef: déploiement.git_ref,
-    }));
+    return tousLesDéploiements.reduce(
+      (déploiementsAvecSuccès: Déploiement[], déploiement) => {
+        if (déploiement.status === this.DÉPLOIEMENT_RÉUSSI) {
+          déploiementsAvecSuccès.push({
+            date: new Date(déploiement.created_at),
+            gitRef: déploiement.git_ref,
+          });
+        }
+        return déploiementsAvecSuccès;
+      },
+      [],
+    );
   }
 
   private async récupèreLesDéploiementsDeLaPage(
